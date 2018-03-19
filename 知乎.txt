@@ -1,12 +1,133 @@
-�㷨�⣬��ת��������
-����⣬���һ��΢��������Ĺ���
-Lucene �ײ���������δ洢��
-������
-Hashtable currenthashmap����
+Q:算法题，反转单项链表
+===
 
-Mysql������ΪʲôҪ��B+����
+递归反转法：在反转当前节点之前先反转后续节点。这样从头结点开始，层层深入直到尾结点才开始反转指针域的指向。简单的说就是从尾结点开始，逆向反转各个结点的指针域指向，其过程图如下所示：
 
-ElasticSearch  Lucene�ײ�洢�ṹ
++ head：是前一结点的指针域（PS：前一结点的指针域指向当前结点）
++ head.getNext()：是当前结点的指针域（PS：当前结点的指针域指向下一结点）
++ reHead：是反转后新链表的头结点（即原来单链表的尾结点）
+
+![Image text](https://github.com/IceDarron/Ice/blob/master/Image/reverse_single_linkedlist.png)
+
+```java
+package javatest1;  
+public class javatest1 {  
+    public static void main(String[] args) {  
+        Node head = new Node(0);  
+        Node node1 = new Node(1);  
+        Node node2 = new Node(2);  
+        Node node3 = new Node(3);  
+        head.setNext(node1);  
+        node1.setNext(node2);  
+        node2.setNext(node3);  
+  
+        // 打印反转前的链表  
+        Node h = head;  
+        while (null != h) {  
+            System.out.print(h.getData() + " ");  
+            h = h.getNext();  
+        }  
+        // 调用反转方法  
+        head = Reverse1(head);  
+  
+        System.out.println("\n**************************");  
+        // 打印反转后的结果  
+        while (null != head) {  
+            System.out.print(head.getData() + " ");  
+            head = head.getNext();  
+        }  
+    }  
+  
+    /** 
+     * 递归，在反转当前节点之前先反转后续节点 
+     */  
+    public static Node Reverse1(Node head) {  
+        // head看作是前一结点，head.getNext()是当前结点，reHead是反转后新链表的头结点  
+        if (head == null || head.getNext() == null) {  
+            return head;// 若为空链或者当前结点在尾结点，则直接还回  
+        }  
+        Node reHead = Reverse1(head.getNext());// 先反转后续节点head.getNext()  
+        head.getNext().setNext(head);// 将当前结点的指针域指向前一结点  
+        head.setNext(null);// 前一结点的指针域令为null;  
+        return reHead;// 反转后新链表的头结点  
+    }  
+}  
+  
+    class Node {  
+        private int Data;// 数据域  
+        private Node Next;// 指针域  
+  
+        public Node(int Data) {  
+            // super();  
+            this.Data = Data;  
+        }  
+  
+        public int getData() {  
+            return Data;  
+        }  
+  
+        public void setData(int Data) {  
+            this.Data = Data;  
+        }  
+  
+        public Node getNext() {  
+            return Next;  
+        }  
+  
+        public void setNext(Node Next) {  
+            this.Next = Next;  
+        }  
+    }  
+```
+
+
+
+Q:设计题，设计一个微信抢红包的功能
+===
+
+
+Q:Hashtable与currenthashmap区别
+===
+虽然都是用于多线程的环境，但是实现的机制不一样。
+
+Hashtable是通过synchronized关键字实现的，通过锁住整个对象（类似于互斥锁），保证多线程安全，当数据量增大到一定程度的时候性能会急剧下降。
+
+currenthashmap是通过分段锁机制实现的，所以无论数据多大，每次总会锁定某个segmentation，性能不会受到太大影响。
+
+简而言之，在迭代的过程中，ConcurrentHashMap仅仅锁定map的某个部分，而Hashtable则会锁定整个map。
+
+
+
+Q:Mysql的索引为什么要用B+树？
+===
+首先，这是由于mysql的定位来决定的。关系型数据库。
+
+B-树和B+树最重要的一个区别就是B+树只有叶节点存放数据，其余节点用来索引，而B-树是每个索引节点都会有Data域。
+
+这就决定了B+树更适合用来存储外部数据，也就是所谓的磁盘数据。
+
+从Mysql（Inoodb）的角度来看，B+树是用来充当索引的，一般来说索引非常大，尤其是关系性数据库这种数据量大的索引能达到亿级别，所以为了减少内存的占用，索引也会被存储在磁盘上。
+
+那么Mysql如何衡量查询效率呢？磁盘IO次数，B-树（B类树）的特定就是每层节点数目非常多，层数很少，目的就是为了就少磁盘IO次数，当查询数据的时候，最好的情况就是很快找到目标索引，然后读取数据，使用B+树就能很好的完成这个目的，但是B-树的每个节点都有data域（指针），这无疑增大了节点大小，说白了增加了磁盘IO次数（磁盘IO一次读出的数据量大小是固定的，单个数据变大，每次读出的就少，IO次数增多，一次IO多耗时啊！），而B+树除了叶子节点其它节点并不存储数据，节点小，磁盘IO次数就少。这是优点之一。
+
+另一个优点是什么，B+树所有的Data域在叶子节点，一般来说都会进行一个优化，就是将所有的叶子节点用指针串起来。这样遍历叶子节点就能获得全部数据，这样就能进行区间访问啦。
+
+
+Q:ElasticSearch的Lucene底层存储结构
+===
+跳跃表
+
+布隆过滤器
+
+term dictionary
+
+压缩算法
+
+
+Q:Lucene的底层索引是如何存储的
+===
+倒排索引
+
 
 
 
