@@ -1,2 +1,2 @@
-# IceOneLife
+# Ice
 personal knowledge map
