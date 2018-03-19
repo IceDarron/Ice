@@ -1,0 +1,12 @@
+算法题，反转单项链表
+设计题，设计一个微信抢红包的功能
+Lucene 底层索引是如何存储的
+常规题
+Hashtable currenthashmap区别
+
+Mysql的索引为什么要用B+树？
+
+ElasticSearch  Lucene底层存储结构
+
+
+
