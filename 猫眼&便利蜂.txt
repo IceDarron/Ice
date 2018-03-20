@@ -1,129 +1,172 @@
-è��&������
+猫眼&便利蜂
+===
 
-��������
-ΪɶҪ����������Ȼһ�����Ҫ˵10�飬���ÿһ�鶼�����ǵ�һ�����ش𣡣�������
+常规问题
+===
 
-��Ŀ���
-�������鱨ϵͳ����Excel���룬��es��������չ�֣�
-��������Ϊ���м���������ϵͳ��ί�в�ѯ����ͬ����
-ES����������Ӧ�������µļ����ٶ�
-������Ϣ����Դ�ı����ֶ�
-excel������صĵı����ֶ�
-����һ������Դʱ������ؽ�����
-��������ʱ�������������Ļ���ȫ����
-
-����ͬ��������������أ����߳����
+Q:为啥要换工作（虽然一天可能要说10遍，请把每一遍都当成是第一遍来回答！！！！）
+===
+寻找新的机会, 在提升挑战自己的同时给公司创造更大的价值。
 
 
+```txt
+项目相关
+介绍下情报系统（从Excel导入，到es检索，到展现）
+介绍你认为最有技术含量的系统（委托查询数据同步）
+ES数据量，相应数据量下的检索速度
+公共信息数据源的表及字段
+excel导入相关的的表和字段
+新增一个数据源时，如何重建索引
+导入数据时，索引是增量的还是全量的
+数据同步，阻塞队列相关，多线程相关
+```
 
-�����¼
-���ܵ����¼������
-Ʊ��tgt
-��ϵͳsession��ʱ
-
-���������¼ʱ��ͼ
-��ν�������ϵͳ������tgt������
-sso����ν���tgt��У���
-
-
-spring���
-
-@Autowired��@Resource������
-@Bean��ǩ
-���쵽������ǩ��ʹ��
-���쵽ע���ԭ��
-bean����������
-ApplicationContextAware��д
-
-���쵽SpringIOC�Ľ������̣�SpringAOP�Ľ������� 
-
-springMVC��ԭ����SpringMVC��ΰ�url��λ��controller�Լ����������ģ��Լ������Ľ�������
-��spring���ֵ�Դ�룬ԭ������Ҫ�˽⣩
-
-���������Թ�ԭ���������������е���Щ��������û������JavaEE���е���Щ����������balabala��
-
-
-mybatis
-
-$��#������
-mybatis��ע��
-sql��д��java�ļ�������xml�����ļ�
-
-���쵽mybatis��ԭ��
+Q:单点登录
+=== 
+Q:介绍单点登录的流程
+=== 
+Q:子系统session超时
+=== 
+Q:画出单点登录时序图
+=== 
+Q:如何解决多个子系统跨域共享tgt的问题
+=== 
+Q:sso是如何进行tgt的校验的
+=== 
+Q:ES数据量，相应数据量下的检索速度
+=== 
+Q:ES新增一个数据源时，如何重建索引
+=== 
+Q:ES导入数据时，索引是增量的还是全量的
+=== 
 
 
-mysql
-mysql��������
-������������ͨ����������
-���������Ǿ۴���������B+tree������
+Q:@Autowired和@Resource的区别
+===
+Q:@Bean标签
+===
 
-����֪ʶ��mysql������뼶��ÿ�����뼶����ܻ������������ν���ȡ�
+Q:延伸到其他标签的使用
+===
+Q:延伸到注解的原理
+===
+
+Q:bean的声明周期
+===
+Q:ApplicationContextAware重写
+===
+
+Q:延伸到SpringIOC的解析过程，SpringAOP的解析流程 
+===
+
+Q:springMVC的原理，SpringMVC如何把url定位到controller以及各个方法的，以及后续的解析过程（spring部分的源码，原理，都要了解）
+
+===
+
+```txt
+便利蜂面试官原话：我们现在所有的这些技术，都没有脱离JavaEE已有的这些技术本身，balabala，
+```
+
+Q:$和#的区别 
+===
+#方式能够很大程度防止sql注入。　
+$方式无法防止Sql注入。
+
+Q:mybatis的注解
+===
+
+
+Q:sql是写到java文件，还是xml配置文件
+===
+
+Q:延伸到mybatis的原理
+===
+
+Q:mysql索引类型
+===
+
+Q:主键索引，普通索引，区别
+===
+
+Q:主键索引是聚簇索引，和B+tree的区别
+===
+
+
+Q:延伸知识，mysql事物，隔离级别，每个隔离级别可能会产生的问题如何解决等。
+===
 
 
 
-
-ElasticSearch���
 
  
 
-es����ΰ�һ������·�ɵ�ĳ����Ƭ�ģ�hashֵ���Լ��Ƿ��ֶ��޸Ĺ�һЩ����
-
-es�Ƿ���������Ƭ����ҵ��Ĺ���
-
-
-
-
-
-
-JDKԴ�����
-
-HashMap���ݵĹ��̣���һ�飻
-HashCodeֵ��ͬʱ�����Ķ����룬ͷ����Ϊʲô�����𣺲����ٶȿ죻���죺�������Ŀ������ʹ�ã�
-HashTable��ConcurrentHashMap������
-
-GC���
-
-�ִ��ռ���������
-�����ռ������˴�һ��Ҫ�úÿ�����������
-CMS�����ռ����Ĺ��̷�Ϊ��������һ����stop worldʱ���
+Q:es是如何把一个数据路由到某个分片的，hash值？自己是否手动修改过一些策略
+===
+Q:es是分索引，分片，跟业务的关联
+===
 
 
 
 
-���������
-������ȡ100w��url����������10m��mysqlд���ٶ�����100��/s����θ�Ч���ô���������д��
 
-������һ�������࣬���ڴ�����ʱ�򣬻����û�����
+JDK源码相关
 
-
-�㷨������ʵ�����
-С����أ�ÿ�ε���߶����ϴε�1/2�����N�Σ�����ĸ߶ȣ��������ܳ���
-N�����ֵ����飬�ҳ�ǰM������֣�M<N�����������ظ���
-100w�����֣��ҳ����ظ����ֵ���Щ����Ҫ���Ӷ�O(n)
+Q:HashMap扩容的过程，讲一遍；
+===
+Q:HashCode值相同时，在哪儿插入，为什么？
+===
+头部，插入速度快；延伸：最近插入的可能最近使用。
 
 
-��ϰ�ϲ����������������
-��Ϥ��������������㷨˼��
+Q:HashTable和ConcurrentHashMap的区别
+===
 
 
 
-��ţ�Ʊ������������
+Q:分代收集过程描述
+===
+Q:垃圾收集器（此处一定要好好看看！！！）
+===
+Q:CMS垃圾收集器的过程分为几步，哪一步的stop world时间最长
+===
 
-������HBase�ļ�����δ洢�ģ���es�кβ�ͬ
-������MongoDB�ļ�����δ洢�ģ�MongoDB��Hbase������
 
-Redis�Ļ����û�����
-LRU�����û�����
+
+
+场景设计题
+爬虫爬取100w个url，带宽限制10m，mysql写入速度限制100个/s，如何高效利用带宽，快速写入
+
+如何设计一个缓存类，当内存满的时候，缓存置换策略
+
+
+算法，代码实现相关
+小球落地，每次弹起高度是上次的1/2，求第N次，弹起的高度，经过的总长度
+N个数字的数组，找出前M大的数字（M<N，内容允许重复）
+100w个数字，找出有重复数字的那些数，要求复杂度O(n)
+
+
+复习合并两个有序链表相关
+熟悉常见的面试题的算法思想
+
+
+
+吹牛逼被打脸技术相关
+
+介绍下HBase文件是如何存储的，跟es有何不同
+介绍下MongoDB文件是如何存储的，MongoDB和Hbase的区别
+
+Redis的缓存置换策略
+LRU缓存置换策略
 
 
 Zookeeper
 
 RPC
 
-���ʱش𻷽�
-���й�JVM�Ż�ô����ô�Ż���
-��Ŀ�н����ʲô����
-���й�mysql�Ż�ô������Ż���
+必问必答环节
+进行过JVM优化么，怎么优化的
+项目中解决过什么难题
+进行过mysql优化么，如何优化的
 
 
 
